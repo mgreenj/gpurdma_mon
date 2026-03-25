@@ -4,3 +4,4 @@ This is a Linux Character Device driver that provides telemetry to monitor GPU m
 
 This is a work in progress. Currently three events are monitored, with plans to expand. I'm particularly interested in NUMA topology, and I'm exploring use of Linux's[NUMA memory policy API](https://docs.kernel.org/admin-guide/mm/numa_memory_policy.html) to improve GPU-NIC affinity in real-time.
 
+Originally designed for my project, [VectorFlow-GX](https://github.com/mgreenj/VectorFlow-GX)
