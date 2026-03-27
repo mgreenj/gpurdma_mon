@@ -1,3 +1,6 @@
+> [!NOTE]
+> WORK IN PROGRESS
+
 # gpurdma_mon Kernel Driver
 
 This is a Linux Character Device driver that provides telemetry to monitor GPU memory pressure, and PCIe Peer-to-Peer bandwidth, used by `VectorFlow-GX`, experimental project exploring high-performance network packet processing on the GPU using NVIDIA GPUDirect RDMA. [You can read about and follow my progress on my blog](https://blog.mauricegreen.me/blogs/nvidia-gpu-rdma-packet-perf-1/). The GPU uses NVIDIA GPUDirect RDMA technology and DPDK for the first version. The second version replaces DPDK with NVIDIAs DOCA library; mainly GPUNetIO.
