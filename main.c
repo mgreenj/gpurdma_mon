@@ -59,15 +59,15 @@ static inline int gpurdma_mon_register(void)
             err_core, "misc_register failed: %d\n", rc);
 
     gpurdma.gpu_pdev = pci_get_device(PCI_VENDOR_ID_NVIDIA, PCI_ANY_ID, NULL);
-    if (!gpu_pdev) {
+    if (!gpurdma.gpu_pdev) {
         pr_err("gpurdma_mon: NVIDIA GPU not found\n");
         goto err_misc;
     }
 
     gpurdma.nic_pdev = pci_get_device(PCI_VENDOR_ID_MELLANOX, PCI_ANY_ID, NULL);
-    if (!nic_pdev) {
+    if (!gpurdma.nic_pdev) {
         pr_err("Aborting! Failed to find Mellanox NIC device");
-        goto err_pci_dev;
+        goto err_misc;
     }
 
     CHECK_RC(gpurdma_monitor_init(),
@@ -78,6 +78,8 @@ static inline int gpurdma_mon_register(void)
 
     CHECK_RC(gpurdma_debugfs_init(),
              err_telemetry, "debugfs init failed: %d\n", rc);
+    
+    return 0; 
 
 err_telemetry:
     gpurdma_telemetry_fini();
@@ -98,7 +100,7 @@ err_out:
 }
 
 
-static inline gpurdma_mon_unregister(void)
+static inline void gpurdma_mon_unregister(void)
 {
     gpurdma_debugfs_fini();
     gpurdma_telemetry_fini();
