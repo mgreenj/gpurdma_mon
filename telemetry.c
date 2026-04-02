@@ -20,7 +20,7 @@
 #include <linux/jiffies.h>
 #include "gpurdma_mon.h"
 
-static int gpurdma_validate_pci(struct pci)
+static int gpurdma_validate_pci(struct pci);
 static u32 calculate_bandwidth(u16 lnksta)
 {
     
@@ -38,10 +38,10 @@ static u32 calculate_bandwidth(u16 lnksta)
     // parameter tail call to pci_pcie_cap()
     // reduces search in PCI config space
     u32 speed = lnksta & PCI_EXP_LINKSTA_CLS;
-    u32 width = (linksta & PCI_EXPLINKSTA_NLW) >> 4;
+    u32 width = (lnksta & PCI_EXP_LNKSTA_NLW) >> 4;
     u32 gbps_per_lane;
 
-    switch (case) {
+    switch (speed) {
     case 1: gbps_per_lane = 25;  break;
     case 2: gbps_per_lane = 50;  break;
     case 3: gbps_per_lane = 100; break;
