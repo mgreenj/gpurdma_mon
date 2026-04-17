@@ -25,7 +25,7 @@ void gpurdma_generate_event(u32 event_type, u64 details)
 {
     struct gpurdma_client *client;
     struct gpurdma_event event = {
-        .timestamp_ns = ktime_get_ns();
+        .timestamp_ns = ktime_get_ns(),
         .event_type = event_type,
         .details = details,
     };

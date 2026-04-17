@@ -99,7 +99,7 @@ static ssize_t gpurdma_read(struct file *filp, char __user *buf,
 
     memset(&event, 0, sizeof(event));
 
-    if (copy_to_user(buf, &event, sizeof(event))
+    if (copy_to_user(buf, &event, sizeof(event)))
         return -EFAULT;
 
     atomic_dec(&client->event_count);
